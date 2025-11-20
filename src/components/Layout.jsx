@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Moon, Sun, LayoutDashboard, BookOpen, Download } from 'lucide-react';
+import ExportModal from './ExportModal';
 
 const Layout = ({ children, activeTab, setActiveTab, onExport, currentMarket, onMarketChange }) => {
+    const [isExportModalOpen, setIsExportModalOpen] = useState(false);
     const [darkMode, setDarkMode] = useState(() => {
         if (typeof window !== 'undefined') {
             return localStorage.getItem('theme') === 'dark' ||
@@ -44,7 +46,7 @@ const Layout = ({ children, activeTab, setActiveTab, onExport, currentMarket, on
                                 </select>
                             </div>
                             <button
-                                onClick={onExport}
+                                onClick={() => setIsExportModalOpen(true)}
                                 className="hidden md:flex items-center px-3 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors shadow-sm"
                             >
                                 <Download size={16} className="mr-2" />
@@ -95,6 +97,10 @@ const Layout = ({ children, activeTab, setActiveTab, onExport, currentMarket, on
 
                 {children}
             </main>
+            <ExportModal
+                isOpen={isExportModalOpen}
+                onClose={() => setIsExportModalOpen(false)}
+            />
         </div>
     );
 };
