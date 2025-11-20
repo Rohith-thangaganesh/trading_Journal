@@ -53,7 +53,13 @@ function App() {
   }
 
   return (
-    <Layout activeTab={activeTab} setActiveTab={setActiveTab} onExport={exportToCSV}>
+    <Layout
+      activeTab={activeTab}
+      setActiveTab={setActiveTab}
+      onExport={exportToCSV}
+      currentMarket={market}
+      onMarketChange={handleMarketSelect}
+    >
       {activeTab === 'journal' ? (
         <div className="space-y-8 animate-fade-in">
           <TradeForm market={market} onTradeAdded={handleTradeAdded} />

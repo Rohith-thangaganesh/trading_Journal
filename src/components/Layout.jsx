@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Moon, Sun, LayoutDashboard, BookOpen, Download } from 'lucide-react';
 
-const Layout = ({ children, activeTab, setActiveTab, onExport }) => {
+const Layout = ({ children, activeTab, setActiveTab, onExport, currentMarket, onMarketChange }) => {
     const [darkMode, setDarkMode] = useState(() => {
         if (typeof window !== 'undefined') {
             return localStorage.getItem('theme') === 'dark' ||
@@ -32,6 +32,17 @@ const Layout = ({ children, activeTab, setActiveTab, onExport }) => {
                             </span>
                         </div>
                         <div className="flex items-center space-x-4">
+                            <div className="hidden md:flex items-center space-x-2 mr-4">
+                                <span className="text-sm text-gray-500 dark:text-gray-400">Market:</span>
+                                <select
+                                    value={currentMarket}
+                                    onChange={(e) => onMarketChange(e.target.value)}
+                                    className="block w-32 pl-3 pr-10 py-1.5 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                                >
+                                    <option value="Indian">Indian</option>
+                                    <option value="Forex">Forex</option>
+                                </select>
+                            </div>
                             <button
                                 onClick={onExport}
                                 className="hidden md:flex items-center px-3 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors shadow-sm"
@@ -57,8 +68,8 @@ const Layout = ({ children, activeTab, setActiveTab, onExport }) => {
                     <button
                         onClick={() => setActiveTab('journal')}
                         className={`pb-4 px-2 flex items-center space-x-2 font-medium text-sm transition-colors relative ${activeTab === 'journal'
-                                ? 'text-blue-600 dark:text-blue-400'
-                                : 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300'
+                            ? 'text-blue-600 dark:text-blue-400'
+                            : 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300'
                             }`}
                     >
                         <BookOpen size={18} />
@@ -70,8 +81,8 @@ const Layout = ({ children, activeTab, setActiveTab, onExport }) => {
                     <button
                         onClick={() => setActiveTab('dashboard')}
                         className={`pb-4 px-2 flex items-center space-x-2 font-medium text-sm transition-colors relative ${activeTab === 'dashboard'
-                                ? 'text-blue-600 dark:text-blue-400'
-                                : 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300'
+                            ? 'text-blue-600 dark:text-blue-400'
+                            : 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300'
                             }`}
                     >
                         <LayoutDashboard size={18} />
