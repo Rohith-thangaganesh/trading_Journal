@@ -1,4 +1,4 @@
-# 🚀 Personal Trading Journal
+# 🚀 Personal Trading Journal by using - Vibe Coding Tool [Google Antigravity]
 
 > **"Trade in the Zone. Track with Style."**
 
