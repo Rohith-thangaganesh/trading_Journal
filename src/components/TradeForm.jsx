@@ -39,7 +39,10 @@ const TradeForm = ({ market, onTradeAdded }) => {
 
         let pnl = 0;
         if (exit > 0) {
-            pnl = (formData.type === 'Buy' ? exit - entry : entry - exit) * qty;
+            // For Forex, 1 Lot = 100,000 units
+            const multiplier = formData.market === 'Forex' ? 100000 : 1;
+            const effectiveQty = qty * multiplier;
+            pnl = (formData.type === 'Buy' ? exit - entry : entry - exit) * effectiveQty;
         }
 
         let rr = 0;
