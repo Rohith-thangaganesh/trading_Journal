@@ -60,8 +60,8 @@ const TradeForm = ({ market, onTradeAdded }) => {
         }
 
         setCalculations({
-            pnl: parseFloat(pnl.toFixed(2)),
-            rrRatio: parseFloat(rr.toFixed(2)),
+            pnl: parseFloat(pnl.toFixed(2)) || 0,
+            rrRatio: parseFloat(rr.toFixed(2)) || 0,
             status
         });
     };
@@ -293,8 +293,8 @@ const TradeForm = ({ market, onTradeAdded }) => {
                     <div className="flex justify-between items-center">
                         <span className="text-sm text-gray-500 dark:text-gray-400">Status:</span>
                         <span className={`font-bold px-2 py-0.5 rounded text-xs ${calculations.status === 'Win' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' :
-                                calculations.status === 'Loss' ? 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200' :
-                                    'bg-gray-100 text-gray-800 dark:bg-gray-600 dark:text-gray-200'
+                            calculations.status === 'Loss' ? 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200' :
+                                'bg-gray-100 text-gray-800 dark:bg-gray-600 dark:text-gray-200'
                             }`}>
                             {calculations.status}
                         </span>

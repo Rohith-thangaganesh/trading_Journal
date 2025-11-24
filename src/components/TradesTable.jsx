@@ -133,12 +133,12 @@ const TradesTable = ({ trades, onTradeDeleted }) => {
                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">{trade.quantity}</td>
                                     <td className={`px-6 py-4 whitespace-nowrap text-sm font-bold ${trade.pnl > 0 ? 'text-green-600 dark:text-green-400' : trade.pnl < 0 ? 'text-red-600 dark:text-red-400' : 'text-gray-500'
                                         }`}>
-                                        {trade.pnl !== 0 ? (trade.pnl > 0 ? '+' + trade.pnl : trade.pnl) : '-'}
+                                        {parseFloat(trade.pnl) !== 0 ? (parseFloat(trade.pnl) > 0 ? '+' + trade.pnl : trade.pnl) : '-'}
                                     </td>
                                     <td className="px-6 py-4 whitespace-nowrap text-sm">
                                         <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${trade.status === 'Win' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' :
-                                                trade.status === 'Loss' ? 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200' :
-                                                    'bg-gray-100 text-gray-800 dark:bg-gray-600 dark:text-gray-200'
+                                            trade.status === 'Loss' ? 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200' :
+                                                'bg-gray-100 text-gray-800 dark:bg-gray-600 dark:text-gray-200'
                                             }`}>
                                             {trade.status}
                                         </span>

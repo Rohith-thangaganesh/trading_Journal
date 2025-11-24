@@ -31,7 +31,7 @@ const Dashboard = ({ trades }) => {
     const losses = trades.filter(t => t.status === 'Loss').length;
     const winRate = totalTrades > 0 ? ((wins / totalTrades) * 100).toFixed(1) : 0;
 
-    const totalPnL = trades.reduce((acc, t) => acc + (t.pnl || 0), 0).toFixed(2);
+    const totalPnL = trades.reduce((acc, t) => acc + (parseFloat(t.pnl) || 0), 0).toFixed(2);
 
     const avgRR = trades.length > 0
         ? (trades.reduce((acc, t) => acc + (t.rrRatio || 0), 0) / trades.length).toFixed(2)
